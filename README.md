@@ -27,11 +27,8 @@ Per enviar l'exercici feu servir el classroom:
 ## 1era Iteració (2 punts)
 
 1. Codificar **managers-fs.js**. **Només** heu de afegir codi on trobeu **// ..**
-
   a) Codificar el constructor de la classe **ManagerFs**.
-
   a) Codificar el metode **getData()** perquè llegeixi un JSON i retorni un array[]
-
 1. Podeu consultar https://sebhastian.com/fs-readfilesync/
 
 ## 2ona Iteració (8 punts). 1 Punt per cada crida de app.js
