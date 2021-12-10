@@ -44,5 +44,5 @@ Per enviar l'exercici feu servir el classroom:
 4. Modifica la película con id:3 (1pto)
 5. Devuelve todas las peliculas (1pto)
 6. Todas las peliculas del año 1994 (1pto)
-7. Añadir un actor a la pelicula id (1pto)
+7. Añadir un actor a la pelicula id:4 (1pto)
 8. Película con id:20  (1pto)
