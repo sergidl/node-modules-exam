@@ -7,7 +7,7 @@ En aquest exercici anem a re-construir una versió nova de Movies.
 ## Requisits
 
 - Primer fer un _Fork_ d'aquest repositori https://github.com/rgarciamvm/node-modules-exam.git
-- Después clona __tu__ repositorio
+- Després clona __el teu__ repositori
 
 ## Lliurament
 
