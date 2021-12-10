@@ -28,9 +28,9 @@ Per enviar l'exercici feu servir el classroom:
 
 1. Codificar **managers-fs.js**. **Només** heu de afegir codi on trobeu **// ..**
 
-2.  Codificar el constructor de la classe **ManagerFs**.
+  - Codificar el constructor de la classe **ManagerFs**.
 
-3.  Codificar el metode **getData()** perquè llegeixi un JSON i retorni un array[]
+  - Codificar el metode **getData()** perquè llegeixi un JSON i retorni un array[]
 
 4. Podeu consultar https://sebhastian.com/fs-readfilesync/
 
