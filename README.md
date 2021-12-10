@@ -32,10 +32,16 @@ Per enviar l'exercici feu servir el classroom:
 - Podeu consultar https://sebhastian.com/fs-readfilesync/
 
 
-## 2ona Iteració (8 punts). 1 Punt per cada crida de app.js
+## 2ona Iteració (8 punts). 
+### 1 Punt per cada crida de app.js
 
-1.- Codificar **managers/manager-fs.js** perquè pugui llegir un fitxer JSON. (data/movies.json) - Podeu consultar https://sebhastian.com/fs-readfilesync/
+- Codificar **moviesController.js**. **Només** heu de afegir codi on trobeu **// ..**
 
-2.- Modifiqueu **models/moviesModels.js** perquè importi el array movies des de **managers/manager-fs.js**. No heu de recodificar **només** moficar el import.
-
-3.- Executeu **app.js** ( node app.js) i verifiqueu els resultats amb **results.txt**.
+1. Película con id:2 (1pto)
+2. Eliminar la película con id:2 (1pto)
+3. Añade una nueva película (1pto)
+4. Modifica la película con id:3 (1pto)
+5. Devuelve todas las peliculas (1pto)
+6. Todas las peliculas del año 1994 (1pto)
+7. Añadir un actor (1pto)
+8. Película con id:20  (1pto)9. 
