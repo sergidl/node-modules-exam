@@ -16,38 +16,63 @@ import actorPojo from '../models/actorPojo.js';
 */
 
 const getAllMovies = (data_movie) => {
-    // ...
+    data_movie.res=moviesModel.getMovies();
 }
 
 const getMovieById = (data_movie) => {
-    // ...
-
+    if (!moviesModel.getMovieById(data_movie.req.id))
+    throw new Error('ID '+data_movie.req.id+' no existeix');
+    data_movie.res=[]
+    data_movie.res[0]=moviesModel.getMovieById(data_movie.req.id);
+    let actor=actorsModel.getActorsById(data_movie.req.id);
+    data_movie.res[0].actors=actor.actors
+    
+    
 }
 
 const removeMovie = (data_movie) => {
-    // ...
+    if (!moviesModel.getMovieById(data_movie.req.id))
+    throw new Error('ID '+data_movie.req.id+' no existeix');
+    let i = moviesModel.removeMovie(data_movie.req.id)
+    data_movie.res=moviesModel.getMovies()
+
+    data_movie.res.forEach(element => {
+        let actor=actorsModel.getActorsById(element.id);
+        element.actors=actor.actors
+
+    });
 }
 
 const createMovie = (data_movie) => {
-    // Puede usar ../models/moviePojo para crear una Movies 
-    // Puede usar ../models/actorPojo para crear un Actor
-    // ...
+    
+    moviesModel.createMovie(data_movie.req)
 
 }
 
 const updateMovie = (data_movie) => {
-    // Puede usar ../models/moviePojo para actualizar una Movies 
-    // Puede usar ../models/actorPojo para actualizar un Actor
-    // ...
-
+    
+    if (!moviesModel.getMovieById(data_movie.req.id))
+    throw new Error('ID '+data_movie.req.id+' no existeix');
+    
+    moviesModel.updateMovie(data_movie.req)
 }
 
 const getMovieBy = (data_movie) => {
-    // ...
+    data_movie.res=moviesModel.getMovieBy(data_movie.req)
 }
 
 const updateActors = (data_movie) => {
-    // ...
+    if (!moviesModel.getMovieById(data_movie.req.id))
+    throw new Error('ID '+data_movie.req.id+' no existeix');
+
+   data_movie.res.push(moviesModel.getMovieById(data_movie.req.id))
+   data_movie.res[data_movie.res.length-1].actors.push(data_movie.req.value)
+
+
+
+   // data_movie.res.push(moviesModel.getMovieById(data_movie.req.id))
+
+
 }
 
 export default {
