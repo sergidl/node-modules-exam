@@ -64,14 +64,8 @@ const getMovieBy = (data_movie) => {
 const updateActors = (data_movie) => {
     if (!moviesModel.getMovieById(data_movie.req.id))
     throw new Error('ID '+data_movie.req.id+' no existeix');
-
    data_movie.res.push(moviesModel.getMovieById(data_movie.req.id))
    data_movie.res[data_movie.res.length-1].actors.push(data_movie.req.value)
-
-
-
-   // data_movie.res.push(moviesModel.getMovieById(data_movie.req.id))
-
 
 }
 
