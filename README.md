@@ -33,10 +33,11 @@ Per enviar l'exercici feu servir el classroom:
 
 
 ## 2ona Iteració (8 punts). 
-### 1 Punt per cada crida de app.js
 
 - Codificar **moviesController.js**. **Només** heu de afegir codi on trobeu **// ..**
-- Consultar el resultat esperat de cada crida ne le fitxer **result.txt**
+- Consultar el resultat esperat de cada crida en le fitxer **result.txt**
+
+### 1 Punt per cada crida de app.js
 
 1. Película con id:2 (1pto)
 2. Eliminar la película con id:2 (1pto)
@@ -46,3 +47,5 @@ Per enviar l'exercici feu servir el classroom:
 6. Todas las peliculas del año 1994 (1pto)
 7. Añadir un actor a la pelicula id:4 (1pto)
 8. Película con id:20  (1pto)
+
+- El resultat esperat per la crida número 8 ** Película con id:20  (1pto)** ha de ser **¡Ups! id of movie not found**
