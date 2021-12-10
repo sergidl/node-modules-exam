@@ -30,6 +30,7 @@ Per enviar l'exercici feu servir el classroom:
   - Codificar el constructor de la classe **ManagerFs**.
   - Codificar el metode **getData()** perquè llegeixi un JSON i retorni un array[]
 - Podeu consultar https://sebhastian.com/fs-readfilesync/
+- Fixar-vos com s'usa la classe **ManagerFs** en cada un dels models. moviesModelo.js i actorsmodel.js
 
 
 ## 2ona Iteració (8 punts). 
