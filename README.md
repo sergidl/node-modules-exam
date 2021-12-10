@@ -22,7 +22,8 @@ $ git push origin master
 
 Per enviar l'exercici feu servir el classroom:
 
-1.- Heu d'enviar-me el link del vostre repositori github (exemple : https://github.com/usuari/node-modules-exam.git)
+1. Heu d'enviar-me el link del vostre repositori github (exemple : https://github.com/usuari/node-modules-exam.git)
+2. Heu d'enviar-me els fitxers **manager-fs.js** i **moviesController.js**. Adjunteu aquests fitxers a la tasca.
 
 ## 1era Iteració (2 punts)
 
