@@ -16,56 +16,136 @@ import actorPojo from '../models/actorPojo.js';
 */
 
 const getAllMovies = (data_movie) => {
-    data_movie.res=moviesModel.getMovies();
+    // ...
+    data_movie.clear();
+    const movies = moviesModel.getMovies();
+    //const actors = actorsModel.getActors();
+
+    movies.forEach(element => {
+        element.actors = actorsModel.getActorsById(element.id).actors;
+        // actors.forEach(elementA =>{
+        //     if (element.id == elementA.id){
+        //         element.actors=elementA.actors;
+        //     }
+        // } )
+    });
+
+    data_movie.res = movies;
 }
 
 const getMovieById = (data_movie) => {
-    if (!moviesModel.getMovieById(data_movie.req.id))
-    throw new Error('ID '+data_movie.req.id+' no existeix');
-    data_movie.res=[]
-    data_movie.res[0]=moviesModel.getMovieById(data_movie.req.id);
-    let actor=actorsModel.getActorsById(data_movie.req.id);
-    data_movie.res[0].actors=actor.actors
-    
-    
+    // ...
+    data_movie.clear();
+    if (!data_movie.req.id)
+        throw new Error('Ups! id no existe');
+
+    const movie = moviesModel.getMovieById(data_movie.req.id);
+    if (typeof movie == 'undefined')
+        throw new Error('Ups! movie no existe');
+
+    movie.actors = actorsModel.getActorsById(movie.id).actors;
+    data_movie.res.push(movie);
 }
 
 const removeMovie = (data_movie) => {
-    if (!moviesModel.getMovieById(data_movie.req.id))
-    throw new Error('ID '+data_movie.req.id+' no existeix');
-    let i = moviesModel.removeMovie(data_movie.req.id)
-    data_movie.res=moviesModel.getMovies()
+    // ...
+    data_movie.clear();
+    if (!data_movie.req.id)
+        throw new Error('Ups! id no existe');
 
-    data_movie.res.forEach(element => {
-        let actor=actorsModel.getActorsById(element.id);
-        element.actors=actor.actors
+    // transaccion
+    if (moviesModel.removeMovie(data_movie.req.id) == -1) {
+        throw new Error('Ups! Movie no existe');
+    }
+    if (actorsModel.removeActors(data_movie.req.id) == -1) {
+        throw new Error('Ups! Actors no existe');
+    }
 
-    });
+    getAllMovies(data_movie);
 }
 
 const createMovie = (data_movie) => {
-    
-    moviesModel.createMovie(data_movie.req)
+    // Puede usar ../models/moviePojo para crear una Movies 
+    // Puede usar ../models/actorPojo para crear un Actor
+    // ...
+    data_movie.clear();
+    if (!data_movie.req)
+        throw new Error('Ups! parametro de entarada incorrecto');
+
+    const new_movie = moviePojo(data_movie.req);
+    if (typeof new_movie == 'undefined')
+        throw new Error('Ups! Error new_movie');
+
+    const new_actor = actorPojo(data_movie.req);
+    if (typeof new_actor == 'undefined')
+        throw new Error('Ups! Error new_actor');
+
+    moviesModel.createMovie(new_movie);
+    actorsModel.createActors(new_actor);
+
+    getAllMovies(data_movie);
 
 }
 
 const updateMovie = (data_movie) => {
-    
-    if (!moviesModel.getMovieById(data_movie.req.id))
-    throw new Error('ID '+data_movie.req.id+' no existeix');
-    
-    moviesModel.updateMovie(data_movie.req)
+    // Puede usar ../models/moviePojo para actualizar una Movies 
+    // Puede usar ../models/actorPojo para actualizar un Actor
+    // ...
+    data_movie.clear();
+    if (!data_movie.req)
+        throw new Error('Ups! parametro de entarada incorrecto');
+
+    const new_movie = moviePojo(data_movie.req);
+    if (typeof new_movie == 'undefined')
+        throw new Error('Ups! Error new_movie');
+
+    const new_actor = actorPojo(data_movie.req);
+    if (typeof new_actor == 'undefined')
+        throw new Error('Ups! Error new_actor');
+
+    const movie = moviesModel.updateMovie(new_movie);
+    if (typeof movie == 'undefined')
+        throw new Error('Ups! Error al actualizar Movie');
+
+    const actor = actorsModel.updateActors(new_actor);
+    if (typeof actor == 'undefined')
+        throw new Error('Ups! Error al actualizar Actor');
+
+    getAllMovies(data_movie);
+
 }
 
 const getMovieBy = (data_movie) => {
-    data_movie.res=moviesModel.getMovieBy(data_movie.req)
+    // ...
+    data_movie.clear();
+    if (!data_movie.req)
+        throw new Error('Ups! parametro de entarada incorrecto');
+
+    const movies = moviesModel.getMovieBy(data_movie.req);
+
+    movies.forEach(element => {
+        element.actors = actorsModel.getActorsById(element.id).actors;
+
+    });
+    data_movie.res = movies;
+
 }
 
-const updateActors = (data_movie) => {
-    if (!moviesModel.getMovieById(data_movie.req.id))
-    throw new Error('ID '+data_movie.req.id+' no existeix');
-   data_movie.res.push(moviesModel.getMovieById(data_movie.req.id))
-   data_movie.res[data_movie.res.length-1].actors.push(data_movie.req.value)
+// Changed function name: updateActors to addActors
+// const updateActors = (data_movie) => {
+const addActors = (data_movie) => {
+    // ...
+    data_movie.clear();
+    if (!data_movie.req.id)
+        throw new Error('Ups! parametro de entarada incorrecto');
+
+    const actors = actorsModel.getActorsById(data_movie.req.id);
+    if (typeof actors == 'undefined')
+        throw new Error('Ups! Error Actors no existen');
+    
+    // TODO: No tenemos API en actorsModel para añadir un actor     
+    actors.actors.push(data_movie.req.value);  
+    getAllMovies(data_movie);  
 
 }
 
@@ -76,5 +156,5 @@ export default {
     createMovie,
     updateMovie,
     getMovieBy,
-    updateActors
+    addActors
 }

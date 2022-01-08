@@ -1,8 +1,11 @@
 
-class data_movie{
+class data_movie {
     req = {};
-    res =[];
+    res = [];
+
+    clear(){
+        this.res=[];
+    }
 }
 
 export default new data_movie();
-

@@ -44,8 +44,8 @@ let getMovieBy = function (data_movie) {
     data_movie.res.forEach((e) => console.log(e));
 }
 
-let updateActors = function (data_movie) {
-    moviesController.updateActors(data_movie);
+let addActors = function (data_movie) {
+    moviesController.addActors(data_movie);
     console.log("\n_________________Añadir un actor a la pelicula id:4 (1pto)____________________\n")
     data_movie.res.forEach((e) => console.log(e));
 }
@@ -78,7 +78,7 @@ try {
 
     //Añadir un actor a la pelicula id:4 (1pto)
     data_movie.req = { id: 4, value: 'Ricard el profe' };
-    updateActors(data_movie);
+    addActors(data_movie);
 
     // Película con id:20  (1pto)
     data_movie.req = { id: 20 };
@@ -88,7 +88,6 @@ try {
 } catch (error) {
     console.log(error.message);
 }
-
 
 
 

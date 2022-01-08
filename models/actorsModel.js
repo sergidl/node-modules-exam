@@ -37,7 +37,7 @@ class ActorsModel {
             this.removeActors(req.id);
             this.createActors(req);
         }
-        return req;
+        return actor;
     }
 
 }

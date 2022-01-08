@@ -38,7 +38,7 @@ class MoviesModel {
             this.removeMovie(req.id);
             this.createMovie(req);
         }
-        return req;
+        return movie;
     }
 
 }
